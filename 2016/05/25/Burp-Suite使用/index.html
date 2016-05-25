@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Burp Suite使用 | 简博</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="今天我们项目组长让我过去跟我说我们现在的项目之前提供给阿里让阿里测试，阿里给我们的测试报告，其中主要有xss攻击。然后经理给我说的一个工具，这个工具就是Burp Suite。所以我就百度的下，然后使用并试着还原阿里是怎么进行xss攻击了。  
+使用之前因为Burp Suite需要使用Java环境，所有需要jdk的安装配置。、、
+Burp Suite介绍Burp Suite是用于攻击web引用程序的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Burp Suite使用">
+<meta property="og:url" content="http://yoursite.com/2016/05/25/Burp-Suite使用/index.html">
+<meta property="og:site_name" content="简博">
+<meta property="og:description" content="今天我们项目组长让我过去跟我说我们现在的项目之前提供给阿里让阿里测试，阿里给我们的测试报告，其中主要有xss攻击。然后经理给我说的一个工具，这个工具就是Burp Suite。所以我就百度的下，然后使用并试着还原阿里是怎么进行xss攻击了。  
+使用之前因为Burp Suite需要使用Java环境，所有需要jdk的安装配置。、、
+Burp Suite介绍Burp Suite是用于攻击web引用程序的">
+<meta property="og:image" content="http://static.wooyun.org/20141017/2014101711120074380.png">
+<meta property="og:updated_time" content="2016-05-25T15:22:02.884Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Burp Suite使用">
+<meta name="twitter:description" content="今天我们项目组长让我过去跟我说我们现在的项目之前提供给阿里让阿里测试，阿里给我们的测试报告，其中主要有xss攻击。然后经理给我说的一个工具，这个工具就是Burp Suite。所以我就百度的下，然后使用并试着还原阿里是怎么进行xss攻击了。  
+使用之前因为Burp Suite需要使用Java环境，所有需要jdk的安装配置。、、
+Burp Suite介绍Burp Suite是用于攻击web引用程序的">
+<meta name="twitter:image" content="http://static.wooyun.org/20141017/2014101711120074380.png">
+  
+    <link rel="alternative" href="/atom.xml" title="简博" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/logo.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">程序林</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">一个正在成为码农的人</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="#" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">世代传承的意志，时代的变迁 ，人们的梦想 ，只要人们继续追求自由的答案，这一切都将永不停止</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">程序林</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/logo.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">程序林</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">一个正在成为码农的人</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="#" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Burp-Suite使用" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/25/Burp-Suite使用/" class="article-date">
+  	<time datetime="2016-05-25T01:19:57.000Z" itemprop="datePublished">2016-05-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Burp Suite使用
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/测试工具/">测试工具</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天我们项目组长让我过去跟我说我们现在的项目之前提供给阿里让阿里测试，阿里给我们的测试报告，其中主要有xss攻击。然后经理给我说的一个工具，这个工具就是Burp Suite。所以我就百度的下，然后使用并试着还原阿里是怎么进行xss攻击了。  </p>
+<h2 id="使用之前"><a href="#使用之前" class="headerlink" title="使用之前"></a>使用之前</h2><p>因为Burp Suite需要使用Java环境，所有需要jdk的安装配置。、、</p>
+<h2 id="Burp-Suite介绍"><a href="#Burp-Suite介绍" class="headerlink" title="Burp Suite介绍"></a>Burp Suite介绍</h2><p>Burp Suite是用于攻击web引用程序的集成平台。它包含了许多工具，并为这些工具设计了许多借口，以促进加快攻击应用程序的过程。所有的工具都共享一个能处理并显示HTTP消息，持久性，认证，代理，日志，警报的一个强大的可拓展的框架。本文主要介绍它的一下特点：  </p>
+<blockquote>
+<ul>
+<li>Traget(目标)–显示目标目录结构的一个功能</li>
+<li>Proxy(代理)–拦截HTTP/S的代理服务器，作为一个在浏览器和目标应用程序直接的中间人，允许你拦截，查看，修改在两个方向上的原数据流。</li>
+<li>Spider(蜘蛛)–应用智能感应的网络爬虫，他能完整的枚举应用程序的内容和功能。</li>
+<li>Scanner(扫描器)–高级工具，执行和，他能自动地发现web应用程序的安全漏洞。</li>
+<li>Intruder(入侵)–一个定制的高度可配置的工具，对web应用程序进行自动化攻击，如：枚举标识符，收集有用的数据，以及使用fuzzing技术探测常规漏洞。</li>
+<li>Repeater(中继器)–一个靠手动操作来触发单独的HTTP请求，并分享应用程序响应的工具。</li>
+<li>Sequencer(会话)–用来分享那些不可预知的应用程序会话令牌和重要数据项的随机性的工具。</li>
+<li>Decoder(解码器)–用来手动执行或对应用程序数据者智能解码编码的工具。</li>
+<li>Comparer(对比)–通常是通过一些相关的请求和响应得到两项数据的一个可视化的“差异”。</li>
+<li>Extender(扩展)–可以让你加载Burp Suite的扩展，使用你自己的或第三方代码来扩展Burp Suite的功能。</li>
+<li>Options(设置)–对Burp Suite的一些设置</li>
+</ul>
+</blockquote>
+<h2 id="测试工作流程"><a href="#测试工作流程" class="headerlink" title="测试工作流程"></a>测试工作流程</h2><p>Burp支持手动的Web应用程序测试的活动，他可以让你有效地结合手动和自动化技术，使你可以完全控制所有的BurpSuite执行的行动，并提供有关您所测试的应用程序的详细信息和分析。如下图：<br><img src="http://static.wooyun.org/20141017/2014101711120074380.png" alt=""></p>
+<h2 id="简要分析"><a href="#简要分析" class="headerlink" title="简要分析"></a>简要分析</h2><p>代理工具可以说是Burp Suite测试流程的一个心脏，它可以让你通过浏览器来浏览应用程序来捕获所有相关信息，并让您轻松地开始进一步行动，在一个典型的测试中，侦察和分析阶段包括以下任务：</p>
+<p>手动映射应用程序-使用浏览器通过BurpSuite代理工作，手动映射应用程序通过以下链接，提交表单，并通过多步骤的过程加强。这个过程将填充代理的历史和目标站点地图与所有请求的内容，通过被动蜘蛛将添加到站点地图，可以从应用程序的响应来推断任何进一步的内容(通过链接、表单等)。也可以请求任何未经请求的站点(在站点地图中以灰色显示的)，并使用浏览器请求这些。</p>
+<p>在必要是执行自动映射-您可以使用BurpSuite自动映射过程中的各种方法。可以进行自动蜘蛛爬行，要求在站点地图未经请求的站点。请务必在使用这个工具之前，检查所有的蜘蛛爬行设置。</p>
+<p>使用内容查找功能发现，可以让您浏览或蜘蛛爬行可见的内容链接以进一步的操作。</p>
+<p>使用BurpSuite Intruder(入侵者)通过共同文件和目录列表执行自定义的发现，循环，并确定命中。</p>
+<p>注意，在执行任何自动操作之前，可能有必要更新的BurpSuite的配置的各个方面，诸如目标的范围和会话处理。</p>
+<p>分析应用程序的攻击面 - 映射应用程序的过程中填入代理服务器的历史和目标站点地图与所有的BurpSuite已抓获有关应用程序的信息。这两个库中包含的功能来帮助您分析它们所包含的信息，并评估受攻击面的应用程序公开。此外，您可以使用BurpSuite的目标分析器报告的攻击面的程度和不同类型的应用程序使用的URL 。</p>
+<p>接下来主要介绍下BurpSuite的各个功能吧。先介绍Proxy功能，因为Proxy起到一个心脏功能，所有的应用都基于Proxy的代理功能。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/05/22/markdown写博文/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">markdown写博文</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Burp-Suite使用" data-title="Burp Suite使用" data-url="http://yoursite.com/2016/05/25/Burp-Suite使用/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 程序林
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
