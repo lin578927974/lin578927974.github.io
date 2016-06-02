@@ -7,22 +7,25 @@
   <title>Burp Suite使用 | 简博</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="今天我们项目组长让我过去跟我说我们现在的项目之前提供给阿里让阿里测试，阿里给我们的测试报告，其中主要有xss攻击。然后经理给我说的一个工具，这个工具就是Burp Suite。所以我就百度的下，然后使用并试着还原阿里是怎么进行xss攻击了。  
-使用之前因为Burp Suite需要使用Java环境，所有需要jdk的安装配置。、、
-Burp Suite介绍Burp Suite是用于攻击web引用程序的">
+使用之前因为Burp Suite需要使用Java环境，所以需要jdk的安装配置。之后会写一个单独的博文，待更新。  
+Burp Suite介绍Burp Su">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Burp Suite使用">
 <meta property="og:url" content="http://yoursite.com/2016/05/25/Burp-Suite使用/index.html">
 <meta property="og:site_name" content="简博">
 <meta property="og:description" content="今天我们项目组长让我过去跟我说我们现在的项目之前提供给阿里让阿里测试，阿里给我们的测试报告，其中主要有xss攻击。然后经理给我说的一个工具，这个工具就是Burp Suite。所以我就百度的下，然后使用并试着还原阿里是怎么进行xss攻击了。  
-使用之前因为Burp Suite需要使用Java环境，所有需要jdk的安装配置。、、
-Burp Suite介绍Burp Suite是用于攻击web引用程序的">
+使用之前因为Burp Suite需要使用Java环境，所以需要jdk的安装配置。之后会写一个单独的博文，待更新。  
+Burp Suite介绍Burp Su">
 <meta property="og:image" content="http://static.wooyun.org/20141017/2014101711120074380.png">
-<meta property="og:updated_time" content="2016-05-25T15:22:02.884Z">
+<meta property="og:image" content="http://static.wooyun.org/20141017/2014101711120062713.jpg">
+<meta property="og:image" content="http://static.wooyun.org/20141017/2014101711120053086.jpg">
+<meta property="og:image" content="http://static.wooyun.org/20141017/2014101711120574272.jpg">
+<meta property="og:updated_time" content="2016-05-26T11:45:25.319Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Burp Suite使用">
 <meta name="twitter:description" content="今天我们项目组长让我过去跟我说我们现在的项目之前提供给阿里让阿里测试，阿里给我们的测试报告，其中主要有xss攻击。然后经理给我说的一个工具，这个工具就是Burp Suite。所以我就百度的下，然后使用并试着还原阿里是怎么进行xss攻击了。  
-使用之前因为Burp Suite需要使用Java环境，所有需要jdk的安装配置。、、
-Burp Suite介绍Burp Suite是用于攻击web引用程序的">
+使用之前因为Burp Suite需要使用Java环境，所以需要jdk的安装配置。之后会写一个单独的博文，待更新。  
+Burp Suite介绍Burp Su">
 <meta name="twitter:image" content="http://static.wooyun.org/20141017/2014101711120074380.png">
   
     <link rel="alternative" href="/atom.xml" title="简博" type="application/atom+xml">
@@ -222,7 +225,7 @@ Burp Suite介绍Burp Suite是用于攻击web引用程序的">
     <div class="article-entry" itemprop="articleBody">
       
         <p>今天我们项目组长让我过去跟我说我们现在的项目之前提供给阿里让阿里测试，阿里给我们的测试报告，其中主要有xss攻击。然后经理给我说的一个工具，这个工具就是Burp Suite。所以我就百度的下，然后使用并试着还原阿里是怎么进行xss攻击了。  </p>
-<h2 id="使用之前"><a href="#使用之前" class="headerlink" title="使用之前"></a>使用之前</h2><p>因为Burp Suite需要使用Java环境，所有需要jdk的安装配置。、、</p>
+<h2 id="使用之前"><a href="#使用之前" class="headerlink" title="使用之前"></a>使用之前</h2><p>因为Burp Suite需要使用Java环境，所以需要jdk的安装配置。之后会写一个单独的博文，待更新。  </p>
 <h2 id="Burp-Suite介绍"><a href="#Burp-Suite介绍" class="headerlink" title="Burp Suite介绍"></a>Burp Suite介绍</h2><p>Burp Suite是用于攻击web引用程序的集成平台。它包含了许多工具，并为这些工具设计了许多借口，以促进加快攻击应用程序的过程。所有的工具都共享一个能处理并显示HTTP消息，持久性，认证，代理，日志，警报的一个强大的可拓展的框架。本文主要介绍它的一下特点：  </p>
 <blockquote>
 <ul>
@@ -248,6 +251,10 @@ Burp Suite介绍Burp Suite是用于攻击web引用程序的">
 <p>注意，在执行任何自动操作之前，可能有必要更新的BurpSuite的配置的各个方面，诸如目标的范围和会话处理。</p>
 <p>分析应用程序的攻击面 - 映射应用程序的过程中填入代理服务器的历史和目标站点地图与所有的BurpSuite已抓获有关应用程序的信息。这两个库中包含的功能来帮助您分析它们所包含的信息，并评估受攻击面的应用程序公开。此外，您可以使用BurpSuite的目标分析器报告的攻击面的程度和不同类型的应用程序使用的URL 。</p>
 <p>接下来主要介绍下BurpSuite的各个功能吧。先介绍Proxy功能，因为Proxy起到一个心脏功能，所有的应用都基于Proxy的代理功能。</p>
+<h2 id="Burp-Suite功能按钮键翻译对照"><a href="#Burp-Suite功能按钮键翻译对照" class="headerlink" title="Burp Suite功能按钮键翻译对照"></a>Burp Suite功能按钮键翻译对照</h2><table border="1"><br><tr><br><td>导航栏</td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td>Burp</td><br><td>Burp Suite</td><br><td>save state wizard</td><br><td>保存状态向导</td><br></tr><br><tr><br><td>restore state</td><br><td>回复状态</td><br><td>remember setting</td><br><td>记住设置</td><br></tr><br><tr><br><td>restore defaluts</td><br><td>回复默认</td><br><td>Inreuder</td><br><td>入侵者</td><br></tr><br><tr><br><td>Start attack</td><br><td>开始攻击(爆破)</td><br><td>Actively scan defined insertion points</td><br><td>定义主动扫描插入点</td><br></tr><br><tr><br><td>Repeater</td><br><td>中继器</td><br><td>New tab behavior</td><br><td>新标签的行为</td><br></tr><br><tr><br><td>Automatic payload positions</td><br><td>自动负载位置</td><br><td>config predefined payload lists</td><br><td>配置预定义的有效载荷清单</td><br></tr><br><tr><br><td>Update content-length</td><br><td>更新内容长度</td><br><td>unpack gzip/deflate</td><br><td>解压gzip/放弃</td><br></tr><br><tr><br><td>Follow redirections</td><br><td>跟随重定向</td><br><td>process cookies in redirections</td><br><td>在重定向过程中的cookies</td><br></tr><br><tr><br><td>View</td><br><td>视图</td><br><td>Action</td><br><td>行为</td><br></tr><br><tr><br><td colspan="4">功能项</td><br></tr><br><tr><br><td>Tartget</td><br><td>目标</td><br><td>Proxy</td><br><td>代理</td><br></tr><br><tr><br><td>Spider</td><br><td>蜘蛛</td><br><td>Scanner</td><br><td>扫描</td><br></tr><br><tr><br><td>Intruder</td><br><td>入侵者</td><br><td>Repeater</td><br><td>中继器</td><br></tr><br><tr><br><td>Sequencer</td><br><td>定序器</td><br><td>Decoder</td><br><td>解码器</td><br></tr><br><tr><br><td>Comparer</td><br><td>比较器</td><br><td>Extender</td><br><td>扩展</td><br></tr><br><tr><br><td>Options</td><br><td>设置</td><br><td>Detach</td><br><td>分离</td><br></tr><br><tr><br><td>Filter</td><br><td>过滤器</td><br><td>SiteMap</td><br><td>网站地图</td><br></tr><br><tr><br><td>Scope</td><br><td>范围</td><br><td>Filter by request type</td><br><td>通过请求过滤</td><br></tr><br><tr><br><td>Intercept</td><br><td>拦截</td><br><td>response Modification</td><br><td>响应修改</td><br></tr><br><tr><br><td>match and replace</td><br><td>匹配和替换</td><br><td>ssl pass through</td><br><td>SSL通过</td><br></tr><br><tr><br><td>Miscellaneous</td><br><td>杂项</td><br><td>spider status</td><br><td>蜘蛛状态</td><br></tr><br><tr><br><td>crawler settings</td><br><td>履带式设置</td><br><td>passive spidering</td><br><td>被动蜘蛛</td><br></tr><br><tr><br><td>form submission</td><br><td>表单提交</td><br><td>application login</td><br><td>应用程序登录</td><br></tr><br><tr><br><td>spider engine</td><br><td>蜘蛛引擎</td><br><td>scan queue</td><br><td>扫描队列</td><br></tr><br><tr><br><td>live scanning</td><br><td>现场扫描</td><br><td>live active scanning</td><br><td>现场主动扫描</td><br></tr><br><tr><br><td>live passive scanning</td><br><td>现场被动扫描</td><br><td>attack insertion points</td><br><td>攻击插入点</td><br></tr><br><tr><br><td>active scanning optimization</td><br><td>主动扫描优化</td><br><td>active scanning areas</td><br><td>主动扫描区域</td><br></tr><br><tr><br><td>passive scanning areas</td><br><td>被动扫描区域</td><br><td>Payload</td><br><td>有效载荷</td><br></tr><br><tr><br><td>payload processing</td><br><td>有效载荷处理</td><br><td>select live capture request</td><br><td>选择现场捕获请求</td><br></tr><br><tr><br><td>token location within response</td><br><td>内响应令牌的位置</td><br><td>live capture options</td><br><td>实时捕捉选项</td><br></tr><br><tr><br><td>Manual load</td><br><td>手动加载</td><br><td>Analyze now</td><br><td>现在分析</td><br></tr><br><tr><br><td>Platform authentication</td><br><td>平台认证</td><br><td>Upstream proxy servers</td><br><td>上游代理服务器</td><br></tr><br><tr><br><td>Grep Extrack</td><br><td>提取</td><br><td></td><br><td></td><br></tr><br></table>
+
+<h2 id="Proxy功能"><a href="#Proxy功能" class="headerlink" title="Proxy功能"></a>Proxy功能</h2><p>Burp Proxy相当于BurpSuite的心脏，通过拦截，查看和修改所有的请求和响应你的浏览器与目标Web服务器之间的传递。下面了解有关BrupProxy:<br>使用Proxy需要使用代理服务器，在ie和BurpSuite的设置如下图：<br><img src="http://static.wooyun.org/20141017/2014101711120062713.jpg" alt=""><br><img src="http://static.wooyun.org/20141017/2014101711120053086.jpg" alt=""></p>
+<p>注意这里的端口不能是已经在使用了，否者Running是不会勾选了。<br>这样http协议的监听就可以了,当intercept is on表示开启拦截功能，反之<br><img src="http://static.wooyun.org/20141017/2014101711120574272.jpg" alt=""><br>这样就代表拦截成功，我们可以右击send to Repeater去修改数据再发送，也可以右击改变提交请求方式(change request method)比如get或者post等功能  </p>
 
       
     </div>
@@ -256,6 +263,15 @@ Burp Suite介绍Burp Suite是用于攻击web引用程序的">
   
     
 <nav id="article-nav">
+  
+    <a href="/2016/06/03/SSH框架搭建之Struts2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          SSH框架搭建之Struts2
+        
+      </div>
+    </a>
   
   
     <a href="/2016/05/22/markdown写博文/" id="article-nav-older" class="article-nav-link-wrap">
