@@ -203,25 +203,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="动态JSON"><a href="#动态JSON" class="headerlink" title="动态JSON"></a>动态JSON</h2><p>在做项目时遇到接口返回的json节点是动态了，如下：  </p>
-<pre><code class="json">{
-    page:1,
-    total:2,
-    proList:[{
-        name:&quot;text&quot;,
-        propvalue:[{
-            &quot;12321&quot;:&quot;asdfdsf&quot;
-        }]
-    },{
-        name:&quot;porasdf&quot;,
-        propvalue:[{
-            &quot;1123213&quot;:&quot;asdfdsf&quot;
-        }]
-    }]
-}
-</code></pre>
-<p>以上的json中，如果定义一个实体类是没有办法去解析出来了，其中propvalue是动态了。</p>
-<h2 id="解析json"><a href="#解析json" class="headerlink" title="解析json"></a>解析json</h2><p>解析采用的dll,其中查看源码发现的有jObject和jArray可以返回解析出来</p>
+        <h2 id="动态JSON"><a href="#动态JSON" class="headerlink" title="动态JSON"></a>动态JSON</h2><p>在做项目时遇到接口返回的json节点是动态了，如下：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    page:1,</span><br><span class="line">    total:2,</span><br><span class="line">    proList:[&#123;</span><br><span class="line">        name:"text",</span><br><span class="line">        propvalue:[&#123;</span><br><span class="line">            "12321":"asdfdsf"</span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;,&#123;</span><br><span class="line">        name:"porasdf",</span><br><span class="line">        propvalue:[&#123;</span><br><span class="line">            "1123213":"asdfdsf"</span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;]</span><br><span class="line">&#125;</span><br><span class="line">```  </span><br><span class="line">以上的json中，如果定义一个实体类是没有办法去解析出来了，其中propvalue里的节点是动态了。</span><br><span class="line"></span><br><span class="line">## 解析json</span><br><span class="line"></span><br><span class="line">解析采用的dll是Newtonsoft.Json.dll,其中查看源码发现的有jObject和jArray可以返回解析出来，开始解析： </span><br><span class="line">```c#</span><br><span class="line">//读取保存的txt文件，這裏是以上的json字符串</span><br><span class="line">StreamReader sr6 = File.OpenText(@"D:\text.txt");</span><br><span class="line">string restOfStream = sr6.ReadToEnd();</span><br><span class="line"></span><br><span class="line">//开始解析</span><br><span class="line">JObject jobject = (JObject)JsonConvert.DeserializeObject(restOfStream);</span><br><span class="line">foreach (JProperty item in jobject.Properties())</span><br><span class="line">&#123;</span><br><span class="line">    if (item.Name == "proList")</span><br><span class="line">    &#123;</span><br><span class="line">       JArray arr = (JArray)item.Value;</span><br><span class="line">         foreach (var ja in arr) &#123;</span><br><span class="line">             JObject ob =(JObject) ja;</span><br><span class="line">              foreach (JProperty j in ob.Properties()) &#123;</span><br><span class="line">                  //Console.WriteLine(j.Name+"\t"+j.Value);</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">       //Console.WriteLine(item.Name + "\t" + item.Value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果是json是数组的就采用JArray进行解析，一般对象就用JObject解析，的每个节点可以根据JProperty得到。</p>
 
       
     </div>
